@@ -40,10 +40,10 @@
 
 <!-- 使用FormattingConversionServiceFactoryBean创建ConversionService
 启用注解驱动的格式化功能 -->
-<!-- <bean id="conversionService" 
+<bean id="conversionService" 
 	class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 	<property name="converters" ref="stringToUserConvert"></property>
-</bean> -->
+</bean> 
 
 <!-- 自定义视图转换器 -->
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
