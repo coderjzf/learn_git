@@ -11,7 +11,6 @@
 	<h5>欢迎您:${user.username}</h5>
 	<h5>${user.password}</h5>
 	<h5>${user.id}</h5>
-	
 	<br/>
 	<h5>${value}</h5>
 </body>

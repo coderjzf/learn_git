@@ -14,14 +14,18 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
     
-
+ 
 <context:component-scan base-package="com.jzf.controller"/>
-  
+
+<!-- 用自定义的conversionService覆盖mvc:annotation-driven提供的FormattingConversionService-->
+<mvc:annotation-driven ></mvc:annotation-driven> 
+    
 <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
  
 <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" 
 	p:messageConverters-ref="messageConverters"/>
  
+<!-- 消息转换器 --> 
 <util:list id="messageConverters">
 	<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
 	<bean class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
@@ -31,9 +35,20 @@
 	<bean class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter"></bean>
 </util:list>
 
+<!-- 自定义的转换器:将String类型转换成User -->
+<!-- <bean id="stringToUserConvert" class="com.jzf.model.StringToUserConvert"></bean> -->
+
+<!-- 使用FormattingConversionServiceFactoryBean创建ConversionService
+启用注解驱动的格式化功能 -->
+<!-- <bean id="conversionService" 
+	class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+	<property name="converters" ref="stringToUserConvert"></property>
+</bean> -->
+
+<!-- 自定义视图转换器 -->
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 	p:prefix="/WEB-INF/view/" p:suffix=".jsp" />
 
-  
+   
 
 </beans>

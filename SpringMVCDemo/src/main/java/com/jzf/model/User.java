@@ -1,9 +1,25 @@
 package com.jzf.model;
 
+import java.util.Date;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
+ 
 public class User {
 	private int id;
+	@NotNull
 	private String username;
+	@Length(max=20,min=10)
 	private String password;
+/*	@DateTimeFormat(pattern = "yyyyMMdd")
+	private Date birthday;
+
+	@NumberFormat(pattern = "###.##",style=NumberFormat.Style.NUMBER)
+	private long salry;*/
 
 	public User() {
 
@@ -38,6 +54,22 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+/*	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public long getSalry() {
+		return salry;
+	}
+
+	public void setSalry(long salry) {
+		this.salry = salry;
+	}*/
 
 	@Override
 	public String toString() {
