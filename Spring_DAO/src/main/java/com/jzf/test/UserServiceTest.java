@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.jzf.service.UserServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="classpath:application-transactional.xml")
+@ContextConfiguration(locations="application-transaction.xml")
 public class UserServiceTest {
 	
 	@Autowired
