@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.jzf.service.UserServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("application-transactional.xml")
+@ContextConfiguration(locations="classpath:application-transactional.xml")
 public class UserServiceTest {
 	
 	@Autowired
@@ -24,7 +24,7 @@ public class UserServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		
-	}
+	} 
 
 	@Test
 	public void test() {
