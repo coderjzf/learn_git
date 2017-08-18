@@ -15,23 +15,30 @@
  
 <import resource="classpath:application-dao.xml"/>
 
-<!-- 配置事务管理器 -->
+<context:component-scan base-package="com.jzf.service">
+	<context:include-filter type="annotation" expression="org.springframework.transaction.annotation.Transactional"/>
+</context:component-scan> 
+
+
+<!--  配置事务管理器 -->
 <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	<property name="dataSource" ref="basicDataSource"></property>
 </bean>
 
+<tx:annotation-driven transaction-manager="txManager"/>
+
 <!-- 配置事务增强切面 -->
-<aop:config >
+<!-- <aop:config >
 	<aop:pointcut expression="execution(* com.jzf.service.*.*(..))" id="serviceMethod"/>
 	<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
-</aop:config>
+</aop:config> -->
 
 <!-- 配置事务增强 -->
-<tx:advice id="txAdvice" transaction-manager="txManager" > 
-	<!-- 配置事务属性 -->
+<!-- <tx:advice id="txAdvice" transaction-manager="txManager" > 
+	配置事务属性
 	<tx:attributes>
-		<tx:method name="*"/>
+		<tx:method name="*" />
 	</tx:attributes>
-</tx:advice>
+</tx:advice> -->
 
 </beans>
