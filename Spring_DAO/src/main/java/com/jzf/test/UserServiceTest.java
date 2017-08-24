@@ -28,9 +28,6 @@ public class UserServiceTest {
 
 	@Test
 	public void test() {
-//		User user = new User("ZHAO_KEKE","66666");
-//		User user2 = userServiceImpl.selectUserById(1);
-//		System.out.println(user2);
 		userServiceImpl.selectUserById(1);
 	}
 	
